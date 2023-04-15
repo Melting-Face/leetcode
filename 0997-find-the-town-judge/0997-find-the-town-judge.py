@@ -1,5 +1,3 @@
-from collections import Counter
-
 class Solution:
     def findJudge(self, n: int, trusts: List[List[int]]) -> int:
         trust_set = set()
