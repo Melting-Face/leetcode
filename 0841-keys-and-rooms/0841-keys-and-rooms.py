@@ -2,16 +2,16 @@ from copy import deepcopy
 
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        room = set(rooms[0])
-        total_rooms = deepcopy(room)
-        while room:
+        remain_rooms = set(rooms[0])
+        total_rooms = deepcopy(remain_rooms)
+        while remain_rooms:
             temp_room = set()
-            for key in room:
+            for key in remain_rooms:
                 room_set = set(rooms[key]) - total_rooms
                 if room_set:
                     temp_room.update(room_set)
                     total_rooms.update(room_set)
-            room = temp_room
+            remain_rooms = temp_room
         if 0 in total_rooms:
             total_rooms.remove(0)
 
