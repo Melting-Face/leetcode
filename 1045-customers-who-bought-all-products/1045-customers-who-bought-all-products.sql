@@ -2,7 +2,7 @@
 SELECT customer_id
 FROM Customer
 GROUP BY customer_id
-HAVING count(DISTINCT product_key) = (
-  SELECT DISTINCT count(DISTINCT product_key)
+HAVING COUNT(DISTINCT product_key) = (
+  SELECT DISTINCT COUNT(DISTINCT product_key)
   FROM Product
 )
