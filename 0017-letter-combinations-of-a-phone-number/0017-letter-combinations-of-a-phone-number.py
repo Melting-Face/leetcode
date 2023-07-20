@@ -16,9 +16,7 @@ class Solution:
             "9": lower_to_list[22:],
         }
 
-        arr = []
-        for digit in digits:
-            arr.append(num_to_str[digit])
+        arr = [num_to_str[digit] for digit in digits]
 
         results = []
         if arr:
