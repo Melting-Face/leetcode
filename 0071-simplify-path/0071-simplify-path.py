@@ -3,9 +3,6 @@ class Solution:
         arr = []
         items = [text for text in path.split('/') if text and text != '.']
         for item in items:
-            if item == '.':
-                continue
-
             if item == '..':
                 if arr:
                     arr.pop()
