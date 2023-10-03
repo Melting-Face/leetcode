@@ -1,38 +1,23 @@
-from fractions import Fraction
-from collections import Counter
-
-
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
-        number_of_points = len(points)
-        if number_of_points == 1:
+        if len(points) == 1:
             return 1
 
-        tilt_list = []
-        
-        for i in range(number_of_points):
-            tilt_set = set()
-            for j in range(number_of_points):
-                if i == j:
-                    continue
-                first_point = points[i]
-                second_point = points[j]
-
-                x_rate_of_change = second_point[0] - first_point[0]
-                y_rate_of_change = second_point[1] - first_point[1]
-
-                if x_rate_of_change == 0:
-                    tilt_set.add(f"{second_point[0]}N")
+        point_count = 0
+        for x1, y1 in points:
+            tilt_map = {}
+            for x2, y2 in points:
+                if x1 == x2 and y1 == y2:
                     continue
 
-                if y_rate_of_change == 0:
-                    tilt_set.add(f"N{second_point[1]}")
+                if x1 == x2:
+                    count = tilt_map.get('N', 0)
+                    tilt_map['N'] = count + 1
                     continue
 
-                tilt = Fraction(y_rate_of_change / x_rate_of_change)
-                y_intercept = first_point[1] - round(first_point[0] * tilt, 9)
-                tilt_set.add(f"{tilt}-{y_intercept}")
-            tilt_list += list(tilt_set)
+                tilt = (y2 - y1) / (x2 - x1)
+                count = tilt_map.get(tilt, 0)
+                tilt_map[tilt] = count + 1
 
-        tilt_counts = Counter(tilt_list).most_common()
-        return tilt_counts[0][1]
+            point_count = max(point_count, max(tilt_map.values()))
+        return point_count + 1
