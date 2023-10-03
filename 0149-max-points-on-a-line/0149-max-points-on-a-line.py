@@ -22,11 +22,11 @@ class Solution:
                 y_rate_of_change = second_point[1] - first_point[1]
 
                 if x_rate_of_change == 0:
-                    tilt_set.add(f"{second_point[0]}NaN")
+                    tilt_set.add(f"{second_point[0]}N")
                     continue
 
                 if y_rate_of_change == 0:
-                    tilt_set.add(f"NaN{second_point[1]}")
+                    tilt_set.add(f"N{second_point[1]}")
                     continue
 
                 tilt = Fraction(y_rate_of_change / x_rate_of_change)
