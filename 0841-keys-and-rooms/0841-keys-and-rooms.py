@@ -4,7 +4,6 @@ class Solution:
         key_set = set()
         current_key_set = set(rooms[0])
         while loop_key_set := (current_key_set - key_set):
-            print(current_key_set)
             key_set |= current_key_set
             current_key_set.clear()
             for key in loop_key_set:
