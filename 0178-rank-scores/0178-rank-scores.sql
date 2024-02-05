@@ -1,5 +1,5 @@
-/* Write your PL/SQL query statement below */
-SELECT
-score,
-DENSE_RANK() OVER (ORDER BY score desc) "rank"
-FROM Scores
+# Write your MySQL query statement below
+select
+    score "score",
+    dense_rank() over (order by score desc) "rank"
+from Scores
