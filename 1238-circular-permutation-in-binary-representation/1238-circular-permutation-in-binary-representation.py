@@ -4,13 +4,13 @@ from collections import deque
 class Solution:
     def circularPermutation(self, n: int, start: int) -> List[int]:
         deq = deque()
-        index = None
-        for i in range(0, 2 ** n):
-            item = i ^ (i>>1)
+        start_index = None
+        for index in range(0, 2 ** n):
+            item = index ^ (index >> 1)
             if item == start:
-                index = i
+                start_index = index
             deq.append(item)
 
-        deq.rotate(-index)
+        deq.rotate(-start_index)
 
         return list(deq)
