@@ -16,8 +16,6 @@ class Solution:
         factor_set = {1, n}
         end_index = int(n / 2 if n % 2 == 0 else math.ceil(n / 3))
         for index in range(2, end_index + 1):
-            if index in factor_set:
-                break
             share, remain = divmod(n, index)
             if remain == 0:
                 factor_set.update([index, share])
