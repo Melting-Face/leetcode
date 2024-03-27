@@ -3,14 +3,22 @@ from collections import deque
 
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        row_length = len(mat)
+        col_length = len(mat[0])
         deq = deque()
         for i, row in enumerate(mat):
-            for j, _ in enumerate(row):
-                if mat[i][j] != 0:
-                    deq.append((i, j, 0))
-                    mat[i][j] = None
-        row_length = i + 1
-        col_length = j + 1
+            for j, value in enumerate(row):
+                if (
+                    value == 0
+                    or (j < col_length - 1 and mat[i][j + 1] == 0)
+                    or (j > 0 and mat[i][j - 1] == 0)
+                    or (i < row_length - 1 and mat[i + 1][j] == 0)
+                    or (i > 0 and mat[i - 1][j] == 0)
+                ):
+                    continue
+
+                mat[i][j] = None
+                deq.append((i, j, 1))
 
         while deq:
             i, j, value = deq.popleft()
