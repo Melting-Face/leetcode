@@ -27,13 +27,3 @@ class Solution:
         for value in values[::-1]:
             list_node = ListNode(val=value, next=list_node)
         return list_node
-        
-            
-#         while l1_value or l2_value:
-#             l1_value + l2_value + upbit
-            
-#             l1_value = l1.val
-#             l2_value = l2.val
-#             l1 = l1.next
-#             l2 = l2.next
-        
