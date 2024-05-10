@@ -27,11 +27,11 @@ ids as (
 
 select
     ids.id,
-    COALESCE(requesters.num, 0) + COALESCE(accepters.num, 0) as num
+    coalesce(requesters.num, 0) + coalesce(accepters.num, 0) as num
 from ids
 left join requesters
     on ids.id = requesters.id
 left join accepters
     on ids.id = accepters.id
-order by COALESCE(requesters.num, 0) + COALESCE(accepters.num, 0) desc
+order by coalesce(requesters.num, 0) + coalesce(accepters.num, 0) desc
 limit 1
