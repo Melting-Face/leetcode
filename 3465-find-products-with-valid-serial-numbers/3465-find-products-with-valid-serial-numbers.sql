@@ -3,5 +3,5 @@ select
     *
 from products
 where 
-    regexp_like(description, '(^|[^a-zA-Z0-9])SN[0-9]{4}-[0-9]{4}([^0-9]|$)', 'c')
+    regexp_like(description, '\\bSN[0-9]{4}-[0-9]{4}\\b', 'c')
 order by product_id
